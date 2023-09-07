@@ -1,5 +1,7 @@
 const app = () => {
-  const socket = io('http://localhost:3000');
+  const SERVER_URL = 'https://chat-0dso.onrender.com';
+
+  const socket = io(SERVER_URL);
 
   const messageInput = document.querySelector('.message-input');
   const messagesList = document.querySelector('.messages-list');
@@ -10,7 +12,7 @@ const app = () => {
 
   const getMessages = async () => {
     try {
-      const { data } = await axios.get('http://localhost:3000/api/chat');
+      const { data } = await axios.get(`${SERVER_URL}/api/chat`);
 
       renderMessages(data);
 
